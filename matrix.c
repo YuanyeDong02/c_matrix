@@ -16,10 +16,7 @@ int matrix_allocate(matrix_t *m, int rows, int columns) {
     return 0;
 
 
-    return -ENOSYS; /* ENOSYS is a  standard error code that means 'function
-                       not implemented'. We use it to force the failure of tests
-                       while the functions are not written. Make sure to remove
-                       it when you start to work on a function */
+
 }
 
 void matrix_free(matrix_t *m) {
