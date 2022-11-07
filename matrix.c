@@ -1,7 +1,8 @@
 #include "matrix.h"
 
 #include <errno.h> /* for ENOSYS */
-#include <malloc.h>
+#include <stdio.h>
+
 #include <stdlib.h>
 #include <time.h>
 
