@@ -3,6 +3,7 @@
 #include <errno.h> /* for ENOSYS */
 #include <stdio.h>
 
+
 #include <stdlib.h>
 #include <time.h>
 
@@ -172,12 +173,27 @@ int matrix_allocate_and_init_file(matrix_t *m, char *input_file) {
     int rows = 0;
     int columns = 0;
     char a;
+    int skipline = 0;
+    int skipclo =0;
     while ((a = fgetc(file)) != EOF) {
         if (a == '\n') {
-            rows++;
+            if (skipline==0){
+                rows++;
+            }
+            skipline=1;
+            skipclo=0;
         }
-        if (a == ' ') {
-            columns++;
+        else if (a == ' ') {
+            if(skipclo==0){
+                columns++;
+
+            }
+            skipclo=1;
+            skipline=0;
+        }
+        else {
+            skipclo = 0;
+            skipline = 0;
         }
     }
     columns = (columns / rows) + 1;
